@@ -7,6 +7,7 @@
   "author": "shkim <shkim.roy.d@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/node": "^12.0.7",
     "gql-merge": "^0.0.6",
     "graphql-to-typescript": "^0.1.2",
@@ -22,6 +23,8 @@
   },
   "dependencies": {
     "babel-runtime": "^6.26.0",
+    "bcrypt": "^3.0.6",
+    "class-validator": "^0.9.1",
     "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "graphql-tools": "^4.0.4",
