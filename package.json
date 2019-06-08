@@ -1,0 +1,9 @@
+{
+  "name": "nuber-server",
+  "version": "1.0.0",
+  "description": "Server for Cloning Uber. GraphQL, Typescript, NodeJS",
+  "main": "index.js",
+  "repository": "https://github.com/shkimroy/nuber-server.git",
+  "author": "shkim <shkim.roy.d@gmail.com>",
+  "license": "MIT"
+}
