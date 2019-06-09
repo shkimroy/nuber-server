@@ -23,10 +23,6 @@ const resolvers: Resolvers = {
             payload: phoneNumber,
             verified: true
           })
-          console.log('====================================');
-          console.log("phoneVerification : ", phoneVerification);
-          console.log('====================================');
-
           if (phoneVerification) {
             const newUser = await User.create({ ...args }).save();
             if (newUser.email) {
@@ -34,9 +30,6 @@ const resolvers: Resolvers = {
                 payload: newUser.email,
                 target: "EMAIL"
               }).save();
-              console.log('====================================');
-              console.log("email verficaition : " , emailVerification);
-              console.log('====================================');
               await sendVerificationEmail(newUser.fullName, emailVerification.key)
             }
             const token = createJWT(newUser.id)
