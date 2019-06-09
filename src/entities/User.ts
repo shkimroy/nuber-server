@@ -3,7 +3,6 @@ import { Entity, BaseEntity, PrimaryGeneratedColumn, Column, CreateDateColumn, U
 import { IsEmail } from "class-validator";
 import Chat from "./Chat";
 import Message from "./Message";
-import Verification from "./Verification";
 import Ride from "./Ride";
 
 const BCRYPT_ROUNDS = 10;
@@ -12,9 +11,9 @@ const BCRYPT_ROUNDS = 10;
 class User extends BaseEntity {
   @PrimaryGeneratedColumn() id: number;
 
-  @Column({ type: "text", unique: true }) 
+  @Column({ type: "text", nullable: true }) 
   @IsEmail()
-  email: string;
+  email: string | null;
 
   @Column({ type: "boolean", default: false })
   verifiedEmail: boolean;
@@ -25,13 +24,13 @@ class User extends BaseEntity {
   @Column({ type: "text" })
   lastName: string;
 
-  @Column({ type: "int" })
+  @Column({ type: "int", nullable: true })
   age: number;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true })
   password: string;
 
-  @Column({ type: "text" })
+  @Column({ type: "text", nullable: true })
   phoneNumber: string;
 
   @Column({ type: "boolean", default: false })
@@ -58,14 +57,14 @@ class User extends BaseEntity {
   @Column({ type: "double precision", default: 0 })
   lastOrientation: number;
 
+  @Column({ type: "text", nullable: true })
+  fbId: string;
+
   @ManyToOne(type => Chat, chat => chat.participants)
   chat: Chat;
 
   @OneToMany(type => Message, message => message.user)
   messages: Message[];
-
-  @OneToMany(type => Verification, verification => verification.user)
-  verifications: Verification[];
 
   @OneToMany(type => Ride, ride => ride.passenger)
   ridesAsPassenger: Ride[];
